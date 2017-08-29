@@ -55,7 +55,12 @@ public class OSCReceiver : MonoBehaviour
 
     public void ResetSourceMap()
     {
-        sourceMap = resetMap;
+        for (int i = 0; i < maxNumSources; i++)
+        {
+            sourceMap[i].position = Vector3.zero;
+            sourceMap[i].velocity = Vector3.zero;
+        }
+
         hasVelocity = false;
     }
 
@@ -78,7 +83,7 @@ public class OSCReceiver : MonoBehaviour
             float yPos = float.Parse(msgComponents[3]);
             float zPos = float.Parse(msgComponents[4]);
             sourceMap[index].position = new Vector3(xPos, yPos, zPos);
-            sourceMap[index].velocity = new Vector3(float.Parse(msgComponents[5]) - xPos, float.Parse(msgComponents[6]) - yPos, float.Parse(msgComponents[7]) - zPos);
+            sourceMap[index].velocity = new Vector3(float.Parse(msgComponents[5]) - xPos, yPos - float.Parse(msgComponents[6]), float.Parse(msgComponents[7]) - zPos);
             hasVelocity = true;
         }
     }

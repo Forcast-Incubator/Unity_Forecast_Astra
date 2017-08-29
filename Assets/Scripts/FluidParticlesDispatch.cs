@@ -262,6 +262,8 @@ public class FluidParticlesDispatch : MonoBehaviour
             fluidSourcesComputeShader.SetBuffer(fluidSourcesKernel, "fluidSourcesBuffer", fluidSourcesBuffer);
             fluidSourcesComputeShader.Dispatch(fluidSourcesKernel, velocityBoxSize.x / 8, velocityBoxSize.y / 8, velocityBoxSize.z / 8);
 
+            Debug.Log(oscReceiver.sourceMap[147].velocity);
+
             oscReceiver.ResetSourceMap();
         }
     }

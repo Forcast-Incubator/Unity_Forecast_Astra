@@ -94,7 +94,7 @@
 
 		look = normalize(look);
 		float3 right = normalize(cross(look, up));
-		up = normalize(cross(right, look));
+		up = normalize(cross(right, look)) * length(p[0].vel) * _SizeByVelocity;
 
 		v[0] = RotPoint(p[0].pos, float3(-halfS.x, -halfS.y, 0), right, up);
 		v[1] = RotPoint(p[0].pos, float3(-halfS.x, halfS.y, 0), right, up);
